@@ -1,15 +1,21 @@
 package kz.kbtu.renthouse.service;
 
 
+import com.querydsl.core.types.Predicate;
 import kz.kbtu.renthouse.domain.dto.CreateHouseDTO;
+import kz.kbtu.renthouse.domain.dto.HouseFilters;
 import kz.kbtu.renthouse.domain.dto.UpdateHouseDTO;
 import kz.kbtu.renthouse.domain.dto.exception.RentException;
 import kz.kbtu.renthouse.mapper.HouseMapper;
 import kz.kbtu.renthouse.repository.HouseRepository;
 import kz.kbtu.renthouse.repository.entity.HouseEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+
 
 @Service
 @RequiredArgsConstructor
@@ -37,5 +43,9 @@ public class HouseService {
 
     public void deleteHouseById(String houseId) {
         houseRepository.deleteById(houseId);
+    }
+
+    public Page<HouseEntity> getPagedAllHouse(Predicate predicate, Pageable pageable) {
+        return houseRepository.findAll(predicate, pageable);
     }
 }

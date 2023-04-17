@@ -8,11 +8,15 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValuePropertyMappingStrategy;
+import org.springframework.data.domain.Page;
+
+import java.util.List;
 
 @Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface HouseMapper {
 
     HouseDTO map(HouseEntity houseEntity);
+    List<HouseDTO> map(List<HouseEntity> houseEntity);
 
     @Mapping(target = "createdAt", expression = "java(java.time.LocalDate.now())")
     HouseEntity map(CreateHouseDTO createHouseDTO);
