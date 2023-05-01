@@ -71,7 +71,7 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity<UserDTO> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
         // Create new user's account
-        User user = userService.creatUser(new CreateUserDTO(signUpRequest.getUsername(), signUpRequest.getEmail(), passwordEncoder.encode(signUpRequest.getPassword()), null));
+        User user = userService.creatUser(new CreateUserDTO(signUpRequest.getEmail().toLowerCase(), passwordEncoder.encode(signUpRequest.getPassword()), signUpRequest.getPhoto()));
         return ResponseEntity.ok(userMapper.map(user));
     }
 

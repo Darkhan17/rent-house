@@ -41,7 +41,7 @@ public class HouseController {
         );
     }
     @PostMapping
-    public HouseDTO getAllPagedHouses(
+    public HouseDTO createHouse(
             @RequestBody CreateHouseDTO createHouseDTO
     ) {
         return houseMapper.map(houseService.createHouse(createHouseDTO));

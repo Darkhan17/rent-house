@@ -1,46 +1,37 @@
 package kz.kbtu.renthouse.repository.entity;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Set;
 
-@Table(name = "houses")
-@Entity
+@Entity(name = "photos")
 @Getter
 @Setter
-public class HouseEntity {
+@NoArgsConstructor
+public class Photo {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
+    private String link;
 
-    @Column(nullable = false)
-    private TypeOfHouse typeOfHouse;
+    private LocalDate localDate;
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private User author;
+    private HouseEntity house;
 
-    @Column(nullable = false)
-    private String description;
-
-    @Column(nullable = false)
-    private LocalDate createdAt;
-
-    @Column(nullable = false)
-    private BigDecimal price;
-
-    @OneToMany(mappedBy = "house")
-    private Set<Photo> photos;
-
-    private boolean active;
+    public Photo(String link, HouseEntity house) {
+        this.link = link;
+        this.localDate = LocalDate.now();
+        this.house = house;
+    }
 }

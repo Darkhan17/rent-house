@@ -1,5 +1,6 @@
 package kz.kbtu.renthouse.domain.dto;
 
+import kz.kbtu.renthouse.domain.dto.user.UserDTO;
 import kz.kbtu.renthouse.repository.entity.TypeOfHouse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +14,8 @@ import java.time.LocalDate;
 public class HouseDTO {
     private String id;
     private TypeOfHouse typeOfHouse;
-    private String authorId;
+    private UserDTO author;
     private String description;
     private LocalDate createdAt;
+    private boolean active;
 }

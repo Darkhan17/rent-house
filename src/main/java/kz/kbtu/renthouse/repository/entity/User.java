@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.NumberFormat;
 
 import java.time.LocalDate;
 
@@ -23,9 +24,6 @@ public class User {
     private String id;
 
     @Column(nullable = false)
-    private String username;
-
-    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false, length = 64)
@@ -37,4 +35,7 @@ public class User {
     @Column()
     private String photo;
 
+    @Column
+    @NumberFormat
+    private String phoneNumber;
 }

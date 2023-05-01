@@ -23,8 +23,10 @@ public class UserService implements IUserService {
 
     @Override
     public User creatUser(CreateUserDTO createUserDTO) {
-        User user = userMapper.map(createUserDTO);
+        if (userRepository.findByEmail(createUserDTO.getEmail()).isPresent())
+            throw new RentException("User with such email already exist", HttpStatus.CONFLICT.value());
 
+        User user = userMapper.map(createUserDTO);
         Set<Role> roles = new HashSet<>();
 
         /*

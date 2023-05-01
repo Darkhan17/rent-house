@@ -14,11 +14,16 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/aws")
+@RequestMapping("aws")
 @RequiredArgsConstructor
 public class AwsController {
 
     private final IAwsService awsService;
+
+    @DeleteMapping()
+    public void deleteFile(@RequestParam(required = true) String fileName) throws Exception {
+        awsService.deleteObj(fileName);
+    }
 
     @PostMapping(value = "", consumes = {"multipart/form-data"})
     public ResponseEntity<URL> uploadFile(@RequestPart(value = "file") MultipartFile file,
@@ -26,11 +31,6 @@ public class AwsController {
         return new ResponseEntity<>(awsService.putObj(file, folderName), HttpStatus.OK);
     }
 
-
-    @DeleteMapping()
-    public void deleteFile(@RequestParam(required = true) String fileName) throws Exception {
-        awsService.deleteObj(fileName);
-    }
 
     @GetMapping("/urls/list")
     public ResponseEntity<List<URL>> getUrls(@RequestParam(required = false) String folderName,

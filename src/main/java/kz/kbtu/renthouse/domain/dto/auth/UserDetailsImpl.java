@@ -24,8 +24,6 @@ public class UserDetailsImpl implements UserDetails {
 
     private String id;
 
-    private String username;
-
     private String email;
 
     @JsonIgnore
@@ -41,7 +39,6 @@ public class UserDetailsImpl implements UserDetails {
 
         return new UserDetailsImpl(
                 user.getId(),
-                user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
                 new ArrayList<>());
@@ -92,9 +89,6 @@ public class UserDetailsImpl implements UserDetails {
         this.id = id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getEmail() {
         return email;
