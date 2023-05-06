@@ -2,6 +2,7 @@ package kz.kbtu.renthouse.service;
 
 import kz.kbtu.renthouse.domain.dto.exception.RentException;
 import kz.kbtu.renthouse.domain.dto.user.CreateUserDTO;
+import kz.kbtu.renthouse.domain.dto.user.UpdateUserDTO;
 import kz.kbtu.renthouse.mapper.UserMapper;
 import kz.kbtu.renthouse.repository.UserRepository;
 import kz.kbtu.renthouse.repository.entity.User;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import javax.management.relation.Role;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -23,7 +25,8 @@ public class UserService implements IUserService {
 
     @Override
     public User creatUser(CreateUserDTO createUserDTO) {
-        if (userRepository.findByEmail(createUserDTO.getEmail()).isPresent())
+
+        if (userRepository.existsByEmail(createUserDTO.getEmail()))
             throw new RentException("User with such email already exist", HttpStatus.CONFLICT.value());
 
         User user = userMapper.map(createUserDTO);
@@ -81,6 +84,18 @@ public class UserService implements IUserService {
     @Override
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User updateUser(String userId, UpdateUserDTO updateUserDTO) {
+        User user = getUserById(userId);
+        userMapper.mapNonNullValues(user, updateUserDTO);
+        return userRepository.save(user);
     }
 
 }

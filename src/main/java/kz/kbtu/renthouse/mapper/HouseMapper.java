@@ -16,7 +16,7 @@ import org.springframework.data.domain.Page;
 import java.util.List;
 import java.util.Set;
 
-@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE, uses = UserMapper.class)
+@Mapper(componentModel = "spring", nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE, uses = {UserMapper.class, AddressMapper.class} )
 public interface HouseMapper {
 
     HouseDTO map(HouseEntity houseEntity);

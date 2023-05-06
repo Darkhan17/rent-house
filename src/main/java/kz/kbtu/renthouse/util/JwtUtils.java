@@ -38,12 +38,15 @@ public class JwtUtils {
 
 
     public String generateJwtToken(UserDetailsImpl user) {
+
+        User user1 = userService.getUserByEmail(user.getEmail());
         Map<String, Object> claims = new HashMap<>();
         claims.put("email", user.getEmail());
+        claims.put("role", "ADMIN");
         return Jwts.builder()
                 .setSubject(user.getId())
                 .setIssuedAt(new Date())
-                .setClaims(claims)
+                .addClaims(claims)
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();

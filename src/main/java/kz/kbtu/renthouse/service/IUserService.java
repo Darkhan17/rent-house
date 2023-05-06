@@ -2,7 +2,10 @@ package kz.kbtu.renthouse.service;
 
 import kz.kbtu.renthouse.domain.dto.exception.RentException;
 import kz.kbtu.renthouse.domain.dto.user.CreateUserDTO;
+import kz.kbtu.renthouse.domain.dto.user.UpdateUserDTO;
 import kz.kbtu.renthouse.repository.entity.User;
+
+import java.util.List;
 
 public interface IUserService {
 
@@ -15,4 +18,7 @@ public interface IUserService {
 
     boolean existsByEmail(String email);
 
+    List<User> getUsers();
+
+    User updateUser(String userId, UpdateUserDTO updateUserDTO);
 }

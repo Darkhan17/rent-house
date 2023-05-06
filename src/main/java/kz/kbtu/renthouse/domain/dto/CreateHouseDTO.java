@@ -1,13 +1,11 @@
 package kz.kbtu.renthouse.domain.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import kz.kbtu.renthouse.domain.dto.address.CreateAddressDTO;
 import kz.kbtu.renthouse.repository.entity.TypeOfHouse;
+import kz.kbtu.renthouse.repository.entity.address.AddressEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -23,4 +21,5 @@ public class CreateHouseDTO {
     private BigDecimal price;
     private Set<String> photos = new HashSet<>();
     private String authorId;
+    private CreateAddressDTO address;
 }

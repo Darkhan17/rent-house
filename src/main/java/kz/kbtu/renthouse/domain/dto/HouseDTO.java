@@ -1,5 +1,6 @@
 package kz.kbtu.renthouse.domain.dto;
 
+import kz.kbtu.renthouse.domain.dto.address.AddressDTO;
 import kz.kbtu.renthouse.domain.dto.user.UserDTO;
 import kz.kbtu.renthouse.repository.entity.TypeOfHouse;
 import lombok.AllArgsConstructor;
@@ -17,5 +18,7 @@ public class HouseDTO {
     private UserDTO author;
     private String description;
     private LocalDate createdAt;
-    private boolean active;
+    private AddressDTO address;
+    private boolean isActive;
+    private boolean isChecked;
 }

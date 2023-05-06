@@ -1,39 +1,40 @@
-package kz.kbtu.renthouse.repository.entity.address;
+package kz.kbtu.renthouse.repository.entity;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import kz.kbtu.renthouse.repository.entity.HouseEntity;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
-@Table(name = "addresses")
+@Table(name = "saved-houses")
 @Entity
 @Getter
 @Setter
-public class AddressEntity {
+@NoArgsConstructor
+public class SavedHouse {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
-    @Column(nullable = false)
-    private String postalCode;
-
-    @Column(nullable = false)
-    private String name;
-
-    @Column(nullable = false)
-    private String description;
-
-
     @JsonIgnore
-    @JsonIgnoreProperties("house")
-    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;
+
+
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     private HouseEntity house;
+
+    public SavedHouse(User user, HouseEntity house) {
+        this.user = user;
+        this.house = house;
+    }
 }

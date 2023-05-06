@@ -1,6 +1,7 @@
 package kz.kbtu.renthouse.repository.entity;
 
 import jakarta.persistence.*;
+import kz.kbtu.renthouse.repository.entity.address.AddressEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -9,7 +10,6 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 @Table(name = "houses")
@@ -30,6 +30,9 @@ public class HouseEntity {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User author;
 
+    @OneToOne
+    private AddressEntity address;
+
     @Column(nullable = false)
     private String description;
 
@@ -39,8 +42,16 @@ public class HouseEntity {
     @Column(nullable = false)
     private BigDecimal price;
 
+    @Column
+    private Integer numberOfResidents;
+
     @OneToMany(mappedBy = "house")
     private Set<Photo> photos;
 
-    private boolean active;
+
+    @Column(nullable = false)
+    private boolean isActive;
+
+    @Column(nullable = false)
+    private boolean isChecked;
 }
