@@ -21,4 +21,7 @@ public interface IUserService {
     List<User> getUsers();
 
     User updateUser(String userId, UpdateUserDTO updateUserDTO);
+
+    void deactivateUser(String userId);
+
 }

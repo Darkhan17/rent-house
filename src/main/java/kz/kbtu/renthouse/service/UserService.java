@@ -98,4 +98,11 @@ public class UserService implements IUserService {
         return userRepository.save(user);
     }
 
+    @Override
+    public void deactivateUser(String userId) {
+        User user = getUserById(userId);
+        user.setActive(false);
+        userRepository.save(user);
+    }
+
 }

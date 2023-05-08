@@ -38,4 +38,6 @@ public class User {
     @Column
     @NumberFormat
     private String phoneNumber;
+
+    private boolean isActive;
 }
