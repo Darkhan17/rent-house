@@ -116,6 +116,7 @@ public class HouseService {
     }
 
     public void deleteFromSaved(String houseId) {
-        HouseEntity house = savedHouseRepository.findByHouse_Id(houseId, );
+        SavedHouse house = savedHouseRepository.findByHouse_IdAndUser_Id(houseId, ContextUtils.getUserDetailsImpl().getId());
+        savedHouseRepository.delete(house);
     }
 }
