@@ -38,10 +38,15 @@ public class HouseController {
     ) {
         QHouseEntity qInstance = QHouseEntity.houseEntity;
         BooleanBuilder builder = new BooleanBuilder();
+        builder.and(qInstance.isActive.eq(true));
+        builder.and(qInstance.isChecked.eq(true));
 
         if (maxPrice != null && minPrice!=null) {
             builder.and(qInstance.price.between(minPrice, maxPrice));
         }
+
+        if (maxValueOfResidence != null && minValueOfResidence!= null)
+            builder.and(qInstance.numberOfResidents.between(minValueOfResidence, maxValueOfResidence));
 
         Page<HouseEntity> houseEntities = houseService.getPagedAllHouse(builder.and(predicate), pageable);
         List<HouseDTO> houseDTOList = houseMapper.map(houseEntities.getContent());
@@ -96,8 +101,16 @@ public class HouseController {
 
     @GetMapping("filters")
     public FilterResponseDTO getFilters() {
-        return null;
+        return houseService.getHouseFilters();
     }
+
+
+    @PutMapping("{houseId}/status")
+    public HouseDTO changeStatus(@PathVariable String houseId) {
+        return houseMapper.map(houseService.changeStatus(houseId));
+    }
+
+
     @GetMapping("{houseId}")
     public HouseDTO getApartment (
             @PathVariable String houseId
@@ -106,7 +119,7 @@ public class HouseController {
     }
 
     @PutMapping("{houseId}")
-    public HouseDTO updateHouse (
+    public HouseDTO changeStatus(
             @PathVariable String houseId,
             @RequestBody UpdateHouseDTO updateHouseDTO
     ) {

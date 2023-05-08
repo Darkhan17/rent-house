@@ -25,6 +25,7 @@ public interface HouseMapper {
     @Mapping(target = "createdAt", expression = "java(java.time.LocalDate.now())")
     @Mapping(target = "photos", expression = "java(new java.util.HashSet<>())")
     @Mapping(target = "author", source = "user")
+    @Mapping(target = "active", defaultValue = "true")
     HouseEntity map(CreateHouseDTO createHouseDTO, User user);
 
     void map(@MappingTarget HouseEntity houseEntity, UpdateHouseDTO updateHouseDTO);

@@ -1,5 +1,6 @@
 package kz.kbtu.renthouse.domain.dto;
 
+import jakarta.persistence.Column;
 import kz.kbtu.renthouse.domain.dto.address.AddressDTO;
 import kz.kbtu.renthouse.domain.dto.user.UserDTO;
 import kz.kbtu.renthouse.repository.entity.TypeOfHouse;
@@ -7,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -17,6 +19,8 @@ public class HouseDTO {
     private TypeOfHouse typeOfHouse;
     private UserDTO author;
     private String description;
+    private BigDecimal price;
+    private Integer numberOfResidents;
     private LocalDate createdAt;
     private AddressDTO address;
     private boolean isActive;

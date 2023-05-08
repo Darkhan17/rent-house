@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-09T00:02:13+0600",
+    date = "2023-05-09T02:33:08+0600",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.6 (Amazon.com Inc.)"
 )
 @Component
@@ -74,8 +74,8 @@ public class HouseMapperImpl implements HouseMapper {
         }
         if ( user != null ) {
             houseEntity.setAuthor( user );
-            houseEntity.setId( user.getId() );
             houseEntity.setActive( user.isActive() );
+            houseEntity.setId( user.getId() );
         }
         houseEntity.setCreatedAt( java.time.LocalDate.now() );
         houseEntity.setPhotos( new java.util.HashSet<>() );

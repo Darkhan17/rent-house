@@ -4,7 +4,7 @@ package kz.kbtu.renthouse.service;
 import com.querydsl.core.types.Predicate;
 import kz.kbtu.renthouse.domain.dto.AddToSavedHouseDTO;
 import kz.kbtu.renthouse.domain.dto.CreateHouseDTO;
-import kz.kbtu.renthouse.domain.dto.HouseDTO;
+import kz.kbtu.renthouse.domain.dto.FilterResponseDTO;
 import kz.kbtu.renthouse.domain.dto.UpdateHouseDTO;
 import kz.kbtu.renthouse.domain.dto.auth.UserDetailsImpl;
 import kz.kbtu.renthouse.domain.dto.exception.RentException;
@@ -118,5 +118,21 @@ public class HouseService {
     public void deleteFromSaved(String houseId) {
         SavedHouse house = savedHouseRepository.findByHouse_IdAndUser_Id(houseId, ContextUtils.getUserDetailsImpl().getId());
         savedHouseRepository.delete(house);
+    }
+
+    public HouseEntity changeTheStatusOfChecking(String houseId) {
+        HouseEntity house = getHouseById(houseId);
+        house.setChecked(true);
+        return houseRepository.save(house);
+    }
+
+    public HouseEntity changeStatus(String id) {
+        HouseEntity house = getHouseById(id);
+        house.setActive(!house.isActive());
+        return houseRepository.save(house);
+    }
+
+    public FilterResponseDTO getHouseFilters() {
+        return null;
     }
 }
