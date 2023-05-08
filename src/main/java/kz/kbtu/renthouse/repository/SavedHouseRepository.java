@@ -11,4 +11,6 @@ public interface SavedHouseRepository extends JpaRepository<SavedHouse, String> 
     Page<SavedHouse> findSavedHouseByUser_Id(String userId, Pageable pageable);
 
     boolean existsByUser_IdAndHouse_Id(String userId, String houseId);
+
+    SavedHouse findByHouse_IdAndUser_Id(String houseId, String userId);
 }

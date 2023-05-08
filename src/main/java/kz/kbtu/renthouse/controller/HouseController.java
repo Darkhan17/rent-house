@@ -71,9 +71,17 @@ public class HouseController {
     }
 
     @PostMapping("saved")
-    public void getSavedHouses(@RequestBody AddToSavedHouseDTO addToSavedHouseDTO) {
+    public void addToSavedHouses(@RequestBody AddToSavedHouseDTO addToSavedHouseDTO) {
         houseService.addToSavedHouse(addToSavedHouseDTO);
     }
+
+    @DeleteMapping("saved/{houseId}")
+    public void deleteFromSaved(
+            @PathVariable String houseId
+    ) {
+        houseService.deleteFromSaved(houseId);
+    }
+
 
     @GetMapping("my-adds")
     public Page<HouseDTO> getMyHouses(Pageable pageable) {

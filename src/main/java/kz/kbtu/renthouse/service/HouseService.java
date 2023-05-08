@@ -114,4 +114,8 @@ public class HouseService {
         SavedHouse savedHouse = new SavedHouse(user, house);
         savedHouseRepository.save(savedHouse);
     }
+
+    public void deleteFromSaved(String houseId) {
+        HouseEntity house = savedHouseRepository.findByHouse_Id(houseId, );
+    }
 }
