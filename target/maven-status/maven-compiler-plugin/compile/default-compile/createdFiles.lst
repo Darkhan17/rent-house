@@ -6,6 +6,7 @@ kz/kbtu/renthouse/repository/entity/QHouseEntity.class
 kz/kbtu/renthouse/repository/entity/Photo.class
 kz/kbtu/renthouse/mapper/UserMapperImpl.class
 kz/kbtu/renthouse/mapper/UserMapper.class
+kz/kbtu/renthouse/repository/entity/address/QCity.class
 kz/kbtu/renthouse/repository/entity/TypeOfHouse.class
 kz/kbtu/renthouse/repository/entity/QSavedHouse.class
 kz/kbtu/renthouse/service/HouseService.class
@@ -21,10 +22,13 @@ kz/kbtu/renthouse/repository/UserRepository.class
 kz/kbtu/renthouse/repository/entity/User.class
 kz/kbtu/renthouse/controller/RestExceptionsHandler.class
 kz/kbtu/renthouse/controller/HouseController.class
+kz/kbtu/renthouse/controller/AddressController.class
 kz/kbtu/renthouse/domain/dto/HouseDTO.class
 kz/kbtu/renthouse/repository/HouseRepository.class
+kz/kbtu/renthouse/domain/dto/address/CreateCity.class
 kz/kbtu/renthouse/domain/dto/exception/ErrorDetails$ErrorDetailsBuilder.class
 kz/kbtu/renthouse/controller/AuthController.class
+kz/kbtu/renthouse/repository/entity/address/City.class
 kz/kbtu/renthouse/repository/AddressRepository.class
 kz/kbtu/renthouse/domain/dto/address/CreateAddressDTO.class
 kz/kbtu/renthouse/domain/dto/address/AddressDTO.class
@@ -47,6 +51,7 @@ kz/kbtu/renthouse/domain/dto/FilterResponseDTO.class
 kz/kbtu/renthouse/service/AuthService.class
 kz/kbtu/renthouse/config/EmailConfiguration.class
 kz/kbtu/renthouse/domain/dto/exception/ErrorEntity.class
+kz/kbtu/renthouse/service/AddressService.class
 kz/kbtu/renthouse/domain/dto/exception/ErrorDetails$ErrorDetailsBuilderImpl.class
 kz/kbtu/renthouse/repository/entity/QUser.class
 kz/kbtu/renthouse/repository/entity/SavedHouse.class
@@ -58,6 +63,7 @@ kz/kbtu/renthouse/config/CustomSecurityExpressionRoot.class
 kz/kbtu/renthouse/mapper/AddressMapper.class
 kz/kbtu/renthouse/RentHouseApplication.class
 kz/kbtu/renthouse/config/AuthEntryPointJwt.class
+kz/kbtu/renthouse/repository/CityRepository.class
 kz/kbtu/renthouse/repository/entity/address/AddressEntity.class
 kz/kbtu/renthouse/mapper/HouseMapperImpl.class
 kz/kbtu/renthouse/mapper/AddressMapperImpl.class
@@ -69,6 +75,7 @@ kz/kbtu/renthouse/config/WebSecurityConfig.class
 kz/kbtu/renthouse/domain/dto/auth/SignUpRequest.class
 kz/kbtu/renthouse/repository/entity/QPhoto.class
 kz/kbtu/renthouse/service/AwsServiceImpl.class
+kz/kbtu/renthouse/domain/dto/FilterResponseDTO$FilterResponseDTOBuilder.class
 kz/kbtu/renthouse/controller/AwsController.class
 kz/kbtu/renthouse/domain/dto/exception/ErrorDetails.class
 kz/kbtu/renthouse/domain/dto/exception/RentException.class

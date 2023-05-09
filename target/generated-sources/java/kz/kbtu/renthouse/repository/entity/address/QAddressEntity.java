@@ -22,6 +22,8 @@ public class QAddressEntity extends EntityPathBase<AddressEntity> {
 
     public static final QAddressEntity addressEntity = new QAddressEntity("addressEntity");
 
+    public final QCity city;
+
     public final StringPath description = createString("description");
 
     public final kz.kbtu.renthouse.repository.entity.QHouseEntity house;
@@ -50,6 +52,7 @@ public class QAddressEntity extends EntityPathBase<AddressEntity> {
 
     public QAddressEntity(Class<? extends AddressEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.city = inits.isInitialized("city") ? new QCity(forProperty("city")) : null;
         this.house = inits.isInitialized("house") ? new kz.kbtu.renthouse.repository.entity.QHouseEntity(forProperty("house"), inits.get("house")) : null;
     }
 

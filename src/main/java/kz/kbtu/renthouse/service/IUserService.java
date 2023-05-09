@@ -24,4 +24,5 @@ public interface IUserService {
 
     void deactivateUser(String userId);
 
+    boolean isExistsByEmail(String email);
 }

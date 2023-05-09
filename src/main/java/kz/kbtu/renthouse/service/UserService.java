@@ -104,5 +104,9 @@ public class UserService implements IUserService {
         user.setActive(false);
         userRepository.save(user);
     }
+    @Override
+    public boolean isExistsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
 
 }

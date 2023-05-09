@@ -12,4 +12,5 @@ public class CreateAddressDTO {
     private String postalCode;
     private String name;
     private String description;
+    private String cityId;
 }

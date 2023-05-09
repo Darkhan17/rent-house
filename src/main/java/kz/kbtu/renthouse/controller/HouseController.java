@@ -34,12 +34,14 @@ public class HouseController {
             @RequestParam(required = false) @Min(0) BigDecimal minPrice,
             @RequestParam(required = false) Integer maxValueOfResidence,
             @RequestParam(required = false) @Min(1) Integer minValueOfResidence,
+            @RequestParam String cityId,
             Pageable pageable
     ) {
         QHouseEntity qInstance = QHouseEntity.houseEntity;
         BooleanBuilder builder = new BooleanBuilder();
         builder.and(qInstance.isActive.eq(true));
         builder.and(qInstance.isChecked.eq(true));
+        builder.and(qInstance.address.city.id.eq(cityId));
 
         if (maxPrice != null && minPrice!=null) {
             builder.and(qInstance.price.between(minPrice, maxPrice));
@@ -100,8 +102,10 @@ public class HouseController {
     }
 
     @GetMapping("filters")
-    public FilterResponseDTO getFilters() {
-        return houseService.getHouseFilters();
+    public FilterResponseDTO getFilters(
+            @RequestParam String cityId
+    ) {
+        return houseService.getHouseFilters(cityId);
     }
 
 

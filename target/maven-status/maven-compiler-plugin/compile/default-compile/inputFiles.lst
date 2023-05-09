@@ -1,13 +1,17 @@
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/CityRepository.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/auth/CodeRequest.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/address/City.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/config/AuthEntryPointJwt.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/HouseEntity.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/config/CustomMethodSecurityExpressionHandler.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/user/UserDTO.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/address/CreateCity.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/IUserService.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/controller/RestExceptionsHandler.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/UpdateHouseDTO.java
 /Users/khamitov.darkhan/diploma/target/generated-sources/java/kz/kbtu/renthouse/repository/entity/QPhoto.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/controller/HouseController.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/controller/AddressController.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/mapper/UserMapper.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/aws/AmazonS3CustomClient.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/util/JwtUtils.java
@@ -42,6 +46,7 @@
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/FilterResponseDTO.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/exception/RentException.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/auth/SignUpRequest.java
+/Users/khamitov.darkhan/diploma/target/generated-sources/java/kz/kbtu/renthouse/repository/entity/address/QCity.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/config/AwsS3Configuration.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/mapper/AddressMapper.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/EmailService.java
@@ -51,6 +56,7 @@
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/IAwsService.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/auth/LoginRequest.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/mapper/HouseMapper.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/AddressService.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/exception/ErrorEntity.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/SavedHouse.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/config/EmailConfiguration.java

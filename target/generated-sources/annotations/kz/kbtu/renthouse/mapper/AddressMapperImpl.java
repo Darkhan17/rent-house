@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-09T00:02:13+0600",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.6 (Amazon.com Inc.)"
+    date = "2023-05-09T16:35:34+0600",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Homebrew)"
 )
 @Component
 public class AddressMapperImpl implements AddressMapper {
@@ -41,6 +41,7 @@ public class AddressMapperImpl implements AddressMapper {
         addressDTO.setPostalCode( address.getPostalCode() );
         addressDTO.setName( address.getName() );
         addressDTO.setDescription( address.getDescription() );
+        addressDTO.setCity( address.getCity() );
 
         return addressDTO;
     }

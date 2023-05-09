@@ -21,6 +21,9 @@ public class AddressEntity {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
+    @ManyToOne
+    private City city;
+
     @Column(nullable = false)
     private String postalCode;
 

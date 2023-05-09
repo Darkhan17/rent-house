@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-09T02:33:08+0600",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.6 (Amazon.com Inc.)"
+    date = "2023-05-09T16:35:35+0600",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Homebrew)"
 )
 @Component
 public class HouseMapperImpl implements HouseMapper {
@@ -36,6 +36,8 @@ public class HouseMapperImpl implements HouseMapper {
         houseDTO.setTypeOfHouse( houseEntity.getTypeOfHouse() );
         houseDTO.setAuthor( userMapper.map( houseEntity.getAuthor() ) );
         houseDTO.setDescription( houseEntity.getDescription() );
+        houseDTO.setPrice( houseEntity.getPrice() );
+        houseDTO.setNumberOfResidents( houseEntity.getNumberOfResidents() );
         houseDTO.setCreatedAt( houseEntity.getCreatedAt() );
         houseDTO.setAddress( addressMapper.map( houseEntity.getAddress() ) );
         houseDTO.setActive( houseEntity.isActive() );

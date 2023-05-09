@@ -10,15 +10,10 @@ import kz.kbtu.renthouse.domain.dto.auth.UserDetailsImpl;
 import kz.kbtu.renthouse.domain.dto.exception.RentException;
 import kz.kbtu.renthouse.mapper.AddressMapper;
 import kz.kbtu.renthouse.mapper.HouseMapper;
-import kz.kbtu.renthouse.repository.AddressRepository;
-import kz.kbtu.renthouse.repository.HouseRepository;
-import kz.kbtu.renthouse.repository.PhotoRepository;
-import kz.kbtu.renthouse.repository.SavedHouseRepository;
-import kz.kbtu.renthouse.repository.entity.HouseEntity;
-import kz.kbtu.renthouse.repository.entity.Photo;
-import kz.kbtu.renthouse.repository.entity.SavedHouse;
-import kz.kbtu.renthouse.repository.entity.User;
+import kz.kbtu.renthouse.repository.*;
+import kz.kbtu.renthouse.repository.entity.*;
 import kz.kbtu.renthouse.repository.entity.address.AddressEntity;
+import kz.kbtu.renthouse.repository.entity.address.City;
 import kz.kbtu.renthouse.util.ContextUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -27,7 +22,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 
@@ -42,6 +40,7 @@ public class HouseService {
     private final SavedHouseRepository savedHouseRepository;
     private final AddressMapper addressMapper;
     private final AddressRepository addressRepository;
+    private final CityRepository cityRepository;
 
     public HouseEntity getHouseById(String houseId) {
         return houseRepository.findById(houseId).orElseThrow(
@@ -55,9 +54,14 @@ public class HouseService {
         User user = userService.getUserById(userid);
 
         HouseEntity house = houseMapper.map(createHouseDTO, user);
+        City city = cityRepository.findById(createHouseDTO.getAddress().getCityId()).orElseThrow(
+                ()-> new RentException("City not found", HttpStatus.NOT_FOUND.value())
+        );
+
 
         AddressEntity address = addressMapper.map(createHouseDTO.getAddress());
         address.setHouse(house);
+        address.setCity(city);
         address = addressRepository.save(address);
 
         house.setAddress(address);
@@ -132,7 +136,19 @@ public class HouseService {
         return houseRepository.save(house);
     }
 
-    public FilterResponseDTO getHouseFilters() {
-        return null;
+    public FilterResponseDTO getHouseFilters(String cityId) {
+        BigDecimal maxPrice = houseRepository.findMaxPrice(cityId).orElse(new BigDecimal(0));
+        BigDecimal minPrice = houseRepository.findMinPrice(cityId).orElse(new BigDecimal(0));
+        Integer maxValueOfResidence = houseRepository.findMaxNumberOfResidence(cityId).orElse(0);
+        Integer minValueOfResidence = houseRepository.findMinNumberOfResidence(cityId).orElse(0);
+        List<TypeOfHouse> typeOfHouseList  = houseRepository.findDistinctByTypeOfHouse(cityId);
+        return FilterResponseDTO
+                .builder()
+                .priceMaxValue(maxPrice)
+                .priceMinValue(minPrice)
+                .maxNumberOfResidence(maxValueOfResidence)
+                .minNumberOfResidence(minValueOfResidence)
+                .typeOfHouseList(typeOfHouseList)
+                .build();
     }
 }
