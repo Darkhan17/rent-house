@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-09T16:35:35+0600",
+    date = "2023-05-09T17:04:42+0600",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Homebrew)"
 )
 @Component
@@ -73,6 +73,7 @@ public class HouseMapperImpl implements HouseMapper {
             houseEntity.setAddress( addressMapper.map( createHouseDTO.getAddress() ) );
             houseEntity.setDescription( createHouseDTO.getDescription() );
             houseEntity.setPrice( createHouseDTO.getPrice() );
+            houseEntity.setNumberOfResidents( createHouseDTO.getNumberOfResidents() );
         }
         if ( user != null ) {
             houseEntity.setAuthor( user );

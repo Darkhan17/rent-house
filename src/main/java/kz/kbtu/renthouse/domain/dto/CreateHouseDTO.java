@@ -22,4 +22,5 @@ public class CreateHouseDTO {
     private Set<String> photos = new HashSet<>();
     private String authorId;
     private CreateAddressDTO address;
+    private int numberOfResidents;
 }
