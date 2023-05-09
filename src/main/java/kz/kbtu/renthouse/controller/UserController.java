@@ -24,10 +24,7 @@ public class UserController {
         return ResponseEntity.ok(userMapper.map(userService.getUsers()));
     }
 
-    @GetMapping("is-exist")
-    public boolean isExistsByEmail(@RequestParam String email) {
-        return userService.isExistsByEmail(email);
-    }
+
 
     @GetMapping("{userId}")
     public ResponseEntity<UserDTO> getUser(@PathVariable String userId) throws Exception {
