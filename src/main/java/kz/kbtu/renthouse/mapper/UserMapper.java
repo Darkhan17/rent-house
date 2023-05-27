@@ -16,6 +16,7 @@ public interface UserMapper {
 
     @Mapping(target = "createdAt", expression = "java(java.time.LocalDate.now())")
     @Mapping(target = "email", expression = "java(createUserDTO.getEmail().toLowerCase())")
+    @Mapping(target = "active", constant = "true")
     User map(CreateUserDTO createUserDTO);
 
     UserDTO map(User user);

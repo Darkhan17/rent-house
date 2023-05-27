@@ -23,4 +23,7 @@ public class CreateHouseDTO {
     private String authorId;
     private CreateAddressDTO address;
     private int numberOfResidents;
+    private int area;
+    private int numberOfRooms;
+    private int floor;
 }

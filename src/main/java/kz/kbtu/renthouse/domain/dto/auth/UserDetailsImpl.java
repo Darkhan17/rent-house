@@ -1,6 +1,7 @@
 package kz.kbtu.renthouse.domain.dto.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import kz.kbtu.renthouse.repository.entity.Role;
 import kz.kbtu.renthouse.repository.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +26,8 @@ public class UserDetailsImpl implements UserDetails {
     private String id;
 
     private String email;
+    private Role role;
+    private boolean isActive;
 
     @JsonIgnore
     private String password;
@@ -40,6 +43,8 @@ public class UserDetailsImpl implements UserDetails {
         return new UserDetailsImpl(
                 user.getId(),
                 user.getEmail(),
+                user.getRole(),
+                user.isActive(),
                 user.getPassword(),
                 new ArrayList<>());
     }
@@ -78,7 +83,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return isActive;
     }
 
     public String getId() {
@@ -102,6 +107,13 @@ public class UserDetailsImpl implements UserDetails {
         this.password = password;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;

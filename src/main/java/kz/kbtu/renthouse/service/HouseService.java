@@ -21,6 +21,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
@@ -48,6 +49,7 @@ public class HouseService {
         );
     }
 
+    @Transactional
     public HouseEntity createHouse(CreateHouseDTO createHouseDTO) {
         UserDetailsImpl userDetails = ContextUtils.getUserDetailsImpl();
         String userid = userDetails.getId();

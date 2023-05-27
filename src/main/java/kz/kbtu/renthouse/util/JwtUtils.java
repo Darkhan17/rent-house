@@ -42,7 +42,7 @@ public class JwtUtils {
         User user1 = userService.getUserByEmail(user.getEmail());
         Map<String, Object> claims = new HashMap<>();
         claims.put("email", user.getEmail());
-        claims.put("role", "ADMIN");
+        claims.put("role", user1.getRole());
         return Jwts.builder()
                 .setSubject(user.getId())
                 .setIssuedAt(new Date())

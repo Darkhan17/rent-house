@@ -10,6 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.NumberFormat;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -35,9 +36,21 @@ public class User {
     @Column()
     private String photo;
 
+    @OneToMany
+    private Set<Hobby> hobbies;
+
+    @OneToMany
+    private Set<SocialMediaProfile> socialMediaProfiles;
+
+    private String description;
+
     @Column
     @NumberFormat
     private String phoneNumber;
 
     private boolean isActive;
+
+    private Role role;
+
+    private Gender gender;
 }

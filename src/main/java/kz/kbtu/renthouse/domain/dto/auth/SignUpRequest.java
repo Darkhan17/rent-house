@@ -3,7 +3,9 @@ package kz.kbtu.renthouse.domain.dto.auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import kz.kbtu.renthouse.repository.entity.Gender;
 import lombok.Data;
 
 import java.util.Set;
@@ -22,4 +24,11 @@ public class SignUpRequest {
     private String password;
 
     private String photo;
+
+    @NotBlank
+    @NotNull
+    private String phoneNumber;
+
+    @NotNull
+    private Gender gender;
 }

@@ -1,19 +1,22 @@
 package kz.kbtu.renthouse.mapper;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.processing.Generated;
 import kz.kbtu.renthouse.domain.dto.CreateHouseDTO;
 import kz.kbtu.renthouse.domain.dto.HouseDTO;
 import kz.kbtu.renthouse.domain.dto.UpdateHouseDTO;
 import kz.kbtu.renthouse.repository.entity.HouseEntity;
+import kz.kbtu.renthouse.repository.entity.Photo;
 import kz.kbtu.renthouse.repository.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-09T17:04:42+0600",
+    date = "2023-05-27T21:37:02+0600",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Homebrew)"
 )
 @Component
@@ -42,6 +45,16 @@ public class HouseMapperImpl implements HouseMapper {
         houseDTO.setAddress( addressMapper.map( houseEntity.getAddress() ) );
         houseDTO.setActive( houseEntity.isActive() );
         houseDTO.setChecked( houseEntity.isChecked() );
+        if ( houseEntity.getArea() != null ) {
+            houseDTO.setArea( houseEntity.getArea() );
+        }
+        if ( houseEntity.getFloor() != null ) {
+            houseDTO.setFloor( houseEntity.getFloor() );
+        }
+        Set<Photo> set = houseEntity.getPhotos();
+        if ( set != null ) {
+            houseDTO.setPhotos( new LinkedHashSet<Photo>( set ) );
+        }
 
         return houseDTO;
     }
@@ -69,16 +82,19 @@ public class HouseMapperImpl implements HouseMapper {
         HouseEntity houseEntity = new HouseEntity();
 
         if ( createHouseDTO != null ) {
+            houseEntity.setDescription( createHouseDTO.getDescription() );
             houseEntity.setTypeOfHouse( createHouseDTO.getTypeOfHouse() );
             houseEntity.setAddress( addressMapper.map( createHouseDTO.getAddress() ) );
-            houseEntity.setDescription( createHouseDTO.getDescription() );
             houseEntity.setPrice( createHouseDTO.getPrice() );
             houseEntity.setNumberOfResidents( createHouseDTO.getNumberOfResidents() );
+            houseEntity.setArea( createHouseDTO.getArea() );
+            houseEntity.setFloor( createHouseDTO.getFloor() );
         }
         if ( user != null ) {
             houseEntity.setAuthor( user );
             houseEntity.setActive( user.isActive() );
             houseEntity.setId( user.getId() );
+            houseEntity.setGender( user.getGender() );
         }
         houseEntity.setCreatedAt( java.time.LocalDate.now() );
         houseEntity.setPhotos( new java.util.HashSet<>() );

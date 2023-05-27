@@ -38,7 +38,7 @@ public class AwsS3Configuration {
     public AmazonS3CustomClient s3client() {
         AmazonS3 psClientS3 = AmazonS3ClientBuilder
                 .standard()
-                .withRegion(Regions.US_EAST_1)
+                .withRegion(Regions.AP_SOUTH_1)
                 //.withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(serviceEndpoint, awsRegion))
                 .withCredentials(new AWSStaticCredentialsProvider(basicAWSCredentials()))
                 .build();

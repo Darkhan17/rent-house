@@ -1,17 +1,21 @@
 package kz.kbtu.renthouse.mapper;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.processing.Generated;
 import kz.kbtu.renthouse.domain.dto.user.CreateUserDTO;
 import kz.kbtu.renthouse.domain.dto.user.UpdateUserDTO;
 import kz.kbtu.renthouse.domain.dto.user.UserDTO;
+import kz.kbtu.renthouse.repository.entity.Hobby;
+import kz.kbtu.renthouse.repository.entity.SocialMediaProfile;
 import kz.kbtu.renthouse.repository.entity.User;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-05-09T17:04:42+0600",
+    date = "2023-05-27T21:37:02+0600",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Homebrew)"
 )
 @Component
@@ -27,9 +31,12 @@ public class UserMapperImpl implements UserMapper {
 
         user.setPassword( createUserDTO.getPassword() );
         user.setPhoto( createUserDTO.getPhoto() );
+        user.setPhoneNumber( createUserDTO.getPhoneNumber() );
+        user.setGender( createUserDTO.getGender() );
 
         user.setCreatedAt( java.time.LocalDate.now() );
         user.setEmail( createUserDTO.getEmail().toLowerCase() );
+        user.setActive( true );
 
         return user;
     }
@@ -46,6 +53,19 @@ public class UserMapperImpl implements UserMapper {
         userDTO.setEmail( user.getEmail() );
         userDTO.setCreatedAt( user.getCreatedAt() );
         userDTO.setPhoto( user.getPhoto() );
+        Set<Hobby> set = user.getHobbies();
+        if ( set != null ) {
+            userDTO.setHobbies( new LinkedHashSet<Hobby>( set ) );
+        }
+        Set<SocialMediaProfile> set1 = user.getSocialMediaProfiles();
+        if ( set1 != null ) {
+            userDTO.setSocialMediaProfiles( new LinkedHashSet<SocialMediaProfile>( set1 ) );
+        }
+        userDTO.setDescription( user.getDescription() );
+        userDTO.setPhoneNumber( user.getPhoneNumber() );
+        userDTO.setActive( user.isActive() );
+        userDTO.setRole( user.getRole() );
+        userDTO.setGender( user.getGender() );
 
         return userDTO;
     }

@@ -24,11 +24,17 @@ public class QHouseEntity extends EntityPathBase<HouseEntity> {
 
     public final kz.kbtu.renthouse.repository.entity.address.QAddressEntity address;
 
+    public final NumberPath<Integer> area = createNumber("area", Integer.class);
+
     public final QUser author;
 
     public final DatePath<java.time.LocalDate> createdAt = createDate("createdAt", java.time.LocalDate.class);
 
     public final StringPath description = createString("description");
+
+    public final NumberPath<Integer> floor = createNumber("floor", Integer.class);
+
+    public final EnumPath<Gender> gender = createEnum("gender", Gender.class);
 
     public final StringPath id = createString("id");
 
@@ -38,11 +44,15 @@ public class QHouseEntity extends EntityPathBase<HouseEntity> {
 
     public final NumberPath<Integer> numberOfResidents = createNumber("numberOfResidents", Integer.class);
 
+    public final NumberPath<Integer> numberRooms = createNumber("numberRooms", Integer.class);
+
     public final SetPath<Photo, QPhoto> photos = this.<Photo, QPhoto>createSet("photos", Photo.class, QPhoto.class, PathInits.DIRECT2);
 
     public final NumberPath<java.math.BigDecimal> price = createNumber("price", java.math.BigDecimal.class);
 
     public final EnumPath<TypeOfHouse> typeOfHouse = createEnum("typeOfHouse", TypeOfHouse.class);
+
+    public final NumberPath<Integer> views = createNumber("views", Integer.class);
 
     public QHouseEntity(String variable) {
         this(HouseEntity.class, forVariable(variable), INITS);

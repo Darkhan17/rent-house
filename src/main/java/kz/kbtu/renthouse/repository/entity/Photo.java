@@ -1,6 +1,7 @@
 package kz.kbtu.renthouse.repository.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class Photo {
 
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnore
     private HouseEntity house;
 
     public Photo(String link, HouseEntity house) {

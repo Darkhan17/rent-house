@@ -45,6 +45,15 @@ public class HouseEntity {
     @Column
     private Integer numberOfResidents;
 
+    @Column
+    private Integer numberRooms;
+
+    @Column
+    private Integer area;
+
+    @Column
+    private Integer floor;
+
     @OneToMany(mappedBy = "house")
     private Set<Photo> photos;
 
@@ -54,4 +63,9 @@ public class HouseEntity {
 
     @Column(nullable = false)
     private boolean isChecked;
+
+    private Gender gender;
+
+    @Column(nullable = false)
+    private int views;
 }
