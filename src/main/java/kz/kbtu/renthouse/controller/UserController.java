@@ -6,6 +6,7 @@ import kz.kbtu.renthouse.domain.dto.user.UserDTO;
 import kz.kbtu.renthouse.mapper.UserMapper;
 import kz.kbtu.renthouse.repository.entity.User;
 import kz.kbtu.renthouse.service.IUserService;
+import kz.kbtu.renthouse.util.ContextUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,11 @@ public class UserController {
     @GetMapping("")
     public ResponseEntity<List<UserDTO>> getUsers() {
         return ResponseEntity.ok(userMapper.map(userService.getUsers()));
+    }
+
+    @GetMapping("profile")
+    public ResponseEntity<UserDTO> getUserProfile() {
+        return ResponseEntity.ok(userMapper.map(userService.getUserById(ContextUtils.getUserDetailsImpl().getId())));
     }
 
 
