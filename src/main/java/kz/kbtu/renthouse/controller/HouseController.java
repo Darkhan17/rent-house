@@ -67,14 +67,9 @@ public class HouseController {
 
 
     @GetMapping("saved")
-    public Page<HouseDTO> getSavedHouses(Pageable pageable) {
+    public List<HouseDTO> getSavedHouses(Pageable pageable) {
         Page<HouseEntity> houseEntities = houseService.getSavedHouses(pageable);
-        List<HouseDTO> houseDTOList = houseMapper.map(houseEntities.getContent());
-        return new PageImpl<>(
-                houseDTOList,
-                houseEntities.getPageable(),
-                houseEntities.getTotalElements()
-        );
+        return houseMapper.map(houseEntities.getContent());
     }
 
     @PostMapping("saved")
