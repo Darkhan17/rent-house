@@ -21,7 +21,7 @@ public interface UserMapper {
 
     UserDTO map(User user);
 
-    List<UserDTO> map(List<User> users);
+    List<UserDTO> map(Iterable<User> users);
 
     void mapNonNullValues(@MappingTarget User user, UpdateUserDTO updateUserDTO);
 }

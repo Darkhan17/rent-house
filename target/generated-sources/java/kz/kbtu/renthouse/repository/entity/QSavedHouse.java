@@ -47,7 +47,7 @@ public class QSavedHouse extends EntityPathBase<SavedHouse> {
     public QSavedHouse(Class<? extends SavedHouse> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.house = inits.isInitialized("house") ? new QHouseEntity(forProperty("house"), inits.get("house")) : null;
-        this.user = inits.isInitialized("user") ? new QUser(forProperty("user")) : null;
+        this.user = inits.isInitialized("user") ? new QUser(forProperty("user"), inits.get("user")) : null;
     }
 
 }

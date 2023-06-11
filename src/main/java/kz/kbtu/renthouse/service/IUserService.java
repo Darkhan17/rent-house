@@ -1,6 +1,8 @@
 package kz.kbtu.renthouse.service;
 
+import com.querydsl.core.types.Predicate;
 import kz.kbtu.renthouse.domain.dto.exception.RentException;
+import kz.kbtu.renthouse.domain.dto.hobby.AssignHobbiesDTO;
 import kz.kbtu.renthouse.domain.dto.user.CreateUserDTO;
 import kz.kbtu.renthouse.domain.dto.user.UpdateUserDTO;
 import kz.kbtu.renthouse.repository.entity.User;
@@ -18,11 +20,13 @@ public interface IUserService {
 
     boolean existsByEmail(String email);
 
-    List<User> getUsers();
+    Iterable<User> getUsers(Predicate predicate);
 
     User updateUser(String userId, UpdateUserDTO updateUserDTO);
 
     void deactivateUser(String userId);
 
     boolean isExistsByEmail(String email);
+
+    User assignHobbiesToUser(String userId, AssignHobbiesDTO assignHobbiesDTO);
 }

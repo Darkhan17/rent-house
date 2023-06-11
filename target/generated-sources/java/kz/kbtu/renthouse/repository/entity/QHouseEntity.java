@@ -73,7 +73,7 @@ public class QHouseEntity extends EntityPathBase<HouseEntity> {
     public QHouseEntity(Class<? extends HouseEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.address = inits.isInitialized("address") ? new kz.kbtu.renthouse.repository.entity.address.QAddressEntity(forProperty("address"), inits.get("address")) : null;
-        this.author = inits.isInitialized("author") ? new QUser(forProperty("author")) : null;
+        this.author = inits.isInitialized("author") ? new QUser(forProperty("author"), inits.get("author")) : null;
     }
 
 }

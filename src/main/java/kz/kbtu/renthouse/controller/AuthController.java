@@ -67,7 +67,8 @@ public class AuthController {
                         passwordEncoder.encode(signUpRequest.getPassword()),
                         signUpRequest.getPhoneNumber(),
                         signUpRequest.getGender(),
-                        signUpRequest.getPhoto()
+                        signUpRequest.getPhoto(),
+                        signUpRequest.getCityId()
                 )
         );
         return ResponseEntity.ok(userMapper.map(user));

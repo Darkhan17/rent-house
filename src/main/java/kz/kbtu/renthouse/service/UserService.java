@@ -1,6 +1,8 @@
 package kz.kbtu.renthouse.service;
 
+import com.querydsl.core.types.Predicate;
 import kz.kbtu.renthouse.domain.dto.exception.RentException;
+import kz.kbtu.renthouse.domain.dto.hobby.AssignHobbiesDTO;
 import kz.kbtu.renthouse.domain.dto.user.CreateUserDTO;
 import kz.kbtu.renthouse.domain.dto.user.UpdateUserDTO;
 import kz.kbtu.renthouse.mapper.UserMapper;
@@ -87,8 +89,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<User> getUsers() {
-        return userRepository.findAll();
+    public Iterable<User> getUsers(Predicate predicate) {
+        return userRepository.findAll(predicate);
     }
 
     @Override
@@ -107,6 +109,13 @@ public class UserService implements IUserService {
     @Override
     public boolean isExistsByEmail(String email) {
         return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public User assignHobbiesToUser(String userId, AssignHobbiesDTO assignHobbiesDTO) {
+        User user = getUserById(userId);
+        user.setHobbies(assignHobbiesDTO.getHobbies());
+        return userRepository.save(user);
     }
 
 }

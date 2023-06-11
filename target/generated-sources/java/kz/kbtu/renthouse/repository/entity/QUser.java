@@ -18,7 +18,11 @@ public class QUser extends EntityPathBase<User> {
 
     private static final long serialVersionUID = 273090704L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QUser user = new QUser("user");
+
+    public final kz.kbtu.renthouse.repository.entity.address.QCity city;
 
     public final DatePath<java.time.LocalDate> createdAt = createDate("createdAt", java.time.LocalDate.class);
 
@@ -45,15 +49,24 @@ public class QUser extends EntityPathBase<User> {
     public final SetPath<SocialMediaProfile, QSocialMediaProfile> socialMediaProfiles = this.<SocialMediaProfile, QSocialMediaProfile>createSet("socialMediaProfiles", SocialMediaProfile.class, QSocialMediaProfile.class, PathInits.DIRECT2);
 
     public QUser(String variable) {
-        super(User.class, forVariable(variable));
+        this(User.class, forVariable(variable), INITS);
     }
 
     public QUser(Path<? extends User> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QUser(PathMetadata metadata) {
-        super(User.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QUser(PathMetadata metadata, PathInits inits) {
+        this(User.class, metadata, inits);
+    }
+
+    public QUser(Class<? extends User> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.city = inits.isInitialized("city") ? new kz.kbtu.renthouse.repository.entity.address.QCity(forProperty("city")) : null;
     }
 
 }

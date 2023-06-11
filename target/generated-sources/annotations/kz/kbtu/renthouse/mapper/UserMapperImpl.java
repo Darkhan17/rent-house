@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-03T14:14:53+0600",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Homebrew)"
+    date = "2023-06-11T23:43:55+0600",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.6 (Amazon.com Inc.)"
 )
 @Component
 public class UserMapperImpl implements UserMapper {
@@ -71,12 +71,12 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
-    public List<UserDTO> map(List<User> users) {
+    public List<UserDTO> map(Iterable<User> users) {
         if ( users == null ) {
             return null;
         }
 
-        List<UserDTO> list = new ArrayList<UserDTO>( users.size() );
+        List<UserDTO> list = new ArrayList<UserDTO>();
         for ( User user : users ) {
             list.add( map( user ) );
         }

@@ -3,6 +3,7 @@ package kz.kbtu.renthouse.repository.entity;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
+import kz.kbtu.renthouse.repository.entity.address.City;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -53,4 +54,7 @@ public class User {
     private Role role;
 
     private Gender gender;
+
+    @ManyToOne
+    private City city;
 }

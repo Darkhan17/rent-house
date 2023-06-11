@@ -28,4 +28,6 @@ public class CreateUserDTO {
     private Gender gender;
 
     private String photo;
+
+    private String cityId;
 }

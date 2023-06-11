@@ -48,8 +48,8 @@ public class QSavedRoommates extends EntityPathBase<SavedRoommates> {
 
     public QSavedRoommates(Class<? extends SavedRoommates> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.savedUsers = inits.isInitialized("savedUsers") ? new QUser(forProperty("savedUsers")) : null;
-        this.user = inits.isInitialized("user") ? new QUser(forProperty("user")) : null;
+        this.savedUsers = inits.isInitialized("savedUsers") ? new QUser(forProperty("savedUsers"), inits.get("savedUsers")) : null;
+        this.user = inits.isInitialized("user") ? new QUser(forProperty("user"), inits.get("user")) : null;
     }
 
 }

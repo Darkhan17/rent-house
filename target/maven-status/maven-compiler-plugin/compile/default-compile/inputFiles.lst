@@ -1,9 +1,11 @@
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/CityRepository.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/auth/CodeRequest.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/HobbyService.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/address/City.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/config/AuthEntryPointJwt.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/HouseEntity.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/config/CustomMethodSecurityExpressionHandler.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/hobby/CreateHobbyDTO.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/user/UserDTO.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/SavedRoommates.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/Role.java
@@ -29,11 +31,14 @@
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/User.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/SavedRoommatesRepository.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/controller/UserController.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/HobbyRepository.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/Gender.java
 /Users/khamitov.darkhan/diploma/target/generated-sources/java/kz/kbtu/renthouse/repository/entity/QUser.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/TypeOfHouse.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/SocialMediaProfile.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/mapper/HobbyMapper.java
 /Users/khamitov.darkhan/diploma/target/generated-sources/java/kz/kbtu/renthouse/repository/entity/QHobby.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/hobby/AssignHobbiesDTO.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/HouseFilters.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/exception/ErrorDetails.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/controller/AdminController.java
@@ -44,6 +49,7 @@
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/RoommatesServiceImpl.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/RentHouseApplication.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/controller/AuthController.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/controller/HobbiesController.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/auth/OtpRequest.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/UserService.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/IAuthService.java
@@ -69,6 +75,7 @@
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/IAwsService.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/auth/LoginRequest.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/mapper/HouseMapper.java
+/Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/HobbyServiceImpl.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/service/AddressService.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/domain/dto/exception/ErrorEntity.java
 /Users/khamitov.darkhan/diploma/src/main/java/kz/kbtu/renthouse/repository/entity/SavedHouse.java
