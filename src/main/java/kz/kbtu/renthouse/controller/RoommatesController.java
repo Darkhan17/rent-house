@@ -2,12 +2,14 @@ package kz.kbtu.renthouse.controller;
 
 
 import kz.kbtu.renthouse.domain.dto.user.AddToSavedRoommates;
+import kz.kbtu.renthouse.domain.dto.rommates.SavedRoommateDTO;
+import kz.kbtu.renthouse.mapper.RoommateMapper;
 import kz.kbtu.renthouse.service.RoommatesService;
+import kz.kbtu.renthouse.util.ContextUtils;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -15,11 +17,25 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoommatesController {
 
     private final RoommatesService roommatesService;
-
-    @PostMapping
+    private final RoommateMapper roommateMapper;
+    @GetMapping
+    public List<SavedRoommateDTO> getSaveRoommates() {
+        return roommateMapper.map(
+                roommatesService.getAllRoommates(ContextUtils.getUserDetailsImpl().getId())
+        );
+    }
+    @PostMapping()
     public void addToFavourite(
             @RequestBody AddToSavedRoommates addToSavedRoommates
     ){
         roommatesService.addToSaved(addToSavedRoommates);
+    }
+
+
+    @DeleteMapping("{roommateId}")
+    public void deleteFromSaved(
+            @PathVariable String roommateId
+    ) {
+        roommatesService.deleteFromSaved(roommateId);
     }
 }

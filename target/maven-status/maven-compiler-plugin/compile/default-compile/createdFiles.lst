@@ -9,12 +9,14 @@ kz/kbtu/renthouse/repository/HobbyRepository.class
 kz/kbtu/renthouse/repository/entity/Gender.class
 kz/kbtu/renthouse/repository/entity/TypeOfHouse.class
 kz/kbtu/renthouse/repository/entity/QSavedHouse.class
+kz/kbtu/renthouse/mapper/RoommateMapper.class
 kz/kbtu/renthouse/service/HouseService.class
 kz/kbtu/renthouse/domain/dto/hobby/CreateHobbyDTO.class
 kz/kbtu/renthouse/util/ContextUtils.class
 kz/kbtu/renthouse/repository/entity/address/QAddressEntity.class
 kz/kbtu/renthouse/repository/entity/HouseEntity.class
 kz/kbtu/renthouse/mapper/HobbyMapperImpl.class
+kz/kbtu/renthouse/mapper/RoommateMapperImpl.class
 kz/kbtu/renthouse/domain/dto/HouseDTO.class
 kz/kbtu/renthouse/repository/HouseRepository.class
 kz/kbtu/renthouse/domain/dto/hobby/AssignHobbiesDTO.class
@@ -97,6 +99,7 @@ kz/kbtu/renthouse/repository/entity/SocialMediaProfile.class
 kz/kbtu/renthouse/config/WebSecurityConfig.class
 kz/kbtu/renthouse/domain/dto/auth/SignUpRequest.class
 kz/kbtu/renthouse/domain/dto/FilterResponseDTO$FilterResponseDTOBuilder.class
+kz/kbtu/renthouse/domain/dto/rommates/SavedRoommateDTO.class
 kz/kbtu/renthouse/domain/dto/exception/RentException.class
 kz/kbtu/renthouse/service/RoommatesServiceImpl.class
 kz/kbtu/renthouse/repository/entity/SavedRoommates.class

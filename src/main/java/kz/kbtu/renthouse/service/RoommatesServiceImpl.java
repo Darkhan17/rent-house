@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class RoommatesServiceImpl implements RoommatesService {
@@ -26,6 +28,16 @@ public class RoommatesServiceImpl implements RoommatesService {
         User user = getUser(ContextUtils.getUserDetailsImpl().getId());
         User addToSaved = getUser(addToSavedRoommates.getUserId());
         savedRoommatesRepository.save(new SavedRoommates(user, addToSaved));
+    }
+
+    @Override
+    public void deleteFromSaved(String roommateId) {
+        savedRoommatesRepository.deleteById(roommateId);
+    }
+
+    @Override
+    public List<SavedRoommates> getAllRoommates(String id) {
+        return savedRoommatesRepository.findByUserId(id);
     }
 
     private User getUser(String userId) {
