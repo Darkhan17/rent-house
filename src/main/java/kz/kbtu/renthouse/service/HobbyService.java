@@ -13,4 +13,6 @@ public interface HobbyService {
     List<Hobby> getHobbies();
 
     Hobby getHobbyById(String hobbyId);
+
+    List<Hobby> getHobbyByIds(List<String> hobbyIds);
 }

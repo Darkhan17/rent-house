@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-11T23:43:55+0600",
-    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.6 (Amazon.com Inc.)"
+    date = "2023-06-12T23:32:15+0600",
+    comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Homebrew)"
 )
 @Component
 public class UserMapperImpl implements UserMapper {
@@ -92,6 +92,9 @@ public class UserMapperImpl implements UserMapper {
 
         if ( updateUserDTO.getPhoto() != null ) {
             user.setPhoto( updateUserDTO.getPhoto() );
+        }
+        if ( updateUserDTO.getDescription() != null ) {
+            user.setDescription( updateUserDTO.getDescription() );
         }
         if ( updateUserDTO.getPhoneNumber() != null ) {
             user.setPhoneNumber( updateUserDTO.getPhoneNumber() );

@@ -7,7 +7,9 @@ import kz.kbtu.renthouse.domain.dto.user.CreateUserDTO;
 import kz.kbtu.renthouse.domain.dto.user.UpdateUserDTO;
 import kz.kbtu.renthouse.mapper.UserMapper;
 import kz.kbtu.renthouse.repository.UserRepository;
+import kz.kbtu.renthouse.repository.entity.Hobby;
 import kz.kbtu.renthouse.repository.entity.User;
+import kz.kbtu.renthouse.repository.entity.address.City;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +19,7 @@ import javax.management.relation.Role;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,6 +27,8 @@ public class UserService implements IUserService {
 
     private final UserMapper userMapper;
     private final UserRepository userRepository;
+    private final AddressService addressService;
+    private final HobbyService hobbyService;
 
     @Override
     public User creatUser(CreateUserDTO createUserDTO) {
@@ -97,6 +102,10 @@ public class UserService implements IUserService {
     @Override
     public User updateUser(String userId, UpdateUserDTO updateUserDTO) {
         User user = getUserById(userId);
+        City city = addressService.findCityById(updateUserDTO.getCityId());
+        Set<Hobby> hobbies = new HashSet<>(hobbyService.getHobbyByIds(updateUserDTO.getHobbyIds()));
+        user.setCity(city);
+        user.setHobbies(hobbies);
         userMapper.mapNonNullValues(user, updateUserDTO);
         return userRepository.save(user);
     }

@@ -37,4 +37,9 @@ public class HobbyServiceImpl implements HobbyService{
                 () -> new RentException("hobby not found", HttpStatus.NOT_FOUND.value())
         );
     }
+
+    @Override
+    public List<Hobby> getHobbyByIds(List<String> hobbyIds) {
+        return hobbyRepository.findAllById(hobbyIds);
+    }
 }
