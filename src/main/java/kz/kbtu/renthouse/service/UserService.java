@@ -37,7 +37,9 @@ public class UserService implements IUserService {
             throw new RentException("User with such email already exist", HttpStatus.CONFLICT.value());
 
         User user = userMapper.map(createUserDTO);
+        City city = addressService.findCityById(createUserDTO.getCityId());
         user.setRole(kz.kbtu.renthouse.repository.entity.Role.USER);
+        user.setCity(city);
         Set<Role> roles = new HashSet<>();
 
         /*
