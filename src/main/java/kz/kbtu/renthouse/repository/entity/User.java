@@ -37,7 +37,7 @@ public class User {
     @Column()
     private String photo;
 
-    @OneToMany
+    @ManyToMany
     private Set<Hobby> hobbies;
 
     @OneToMany
