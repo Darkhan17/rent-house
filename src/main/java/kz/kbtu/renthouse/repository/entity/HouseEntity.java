@@ -46,7 +46,7 @@ public class HouseEntity {
     private Integer numberOfResidents;
 
     @Column
-    private Integer numberRooms;
+    private Integer numberOfRooms;
 
     @Column
     private Integer area;

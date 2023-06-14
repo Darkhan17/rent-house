@@ -44,7 +44,7 @@ public class QHouseEntity extends EntityPathBase<HouseEntity> {
 
     public final NumberPath<Integer> numberOfResidents = createNumber("numberOfResidents", Integer.class);
 
-    public final NumberPath<Integer> numberRooms = createNumber("numberRooms", Integer.class);
+    public final NumberPath<Integer> numberOfRooms = createNumber("numberOfRooms", Integer.class);
 
     public final SetPath<Photo, QPhoto> photos = this.<Photo, QPhoto>createSet("photos", Photo.class, QPhoto.class, PathInits.DIRECT2);
 

@@ -28,6 +28,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -99,7 +100,7 @@ public class HouseService {
         String userId = ContextUtils.getUserDetailsImpl().getId();
         Page<SavedHouse> savedHouses = savedHouseRepository.findSavedHouseByUser_Id(userId, pageable);
         return new PageImpl<>(
-                savedHouses.stream().map(SavedHouse::getHouse).toList(),
+                savedHouses.stream().map(SavedHouse::getHouse).collect(Collectors.toList()),
                 savedHouses.getPageable(),
                 savedHouses.getTotalElements()
         );

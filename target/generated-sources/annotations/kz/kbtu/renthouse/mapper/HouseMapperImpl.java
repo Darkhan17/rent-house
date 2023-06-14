@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2023-06-14T06:26:33+0600",
+    date = "2023-06-14T08:51:08+0600",
     comments = "version: 1.5.3.Final, compiler: javac, environment: Java 17.0.2 (Homebrew)"
 )
 @Component
@@ -47,6 +47,9 @@ public class HouseMapperImpl implements HouseMapper {
         houseDTO.setChecked( houseEntity.isChecked() );
         if ( houseEntity.getArea() != null ) {
             houseDTO.setArea( houseEntity.getArea() );
+        }
+        if ( houseEntity.getNumberOfRooms() != null ) {
+            houseDTO.setNumberOfRooms( houseEntity.getNumberOfRooms() );
         }
         if ( houseEntity.getFloor() != null ) {
             houseDTO.setFloor( houseEntity.getFloor() );
@@ -87,6 +90,7 @@ public class HouseMapperImpl implements HouseMapper {
             houseEntity.setAddress( addressMapper.map( createHouseDTO.getAddress() ) );
             houseEntity.setPrice( createHouseDTO.getPrice() );
             houseEntity.setNumberOfResidents( createHouseDTO.getNumberOfResidents() );
+            houseEntity.setNumberOfRooms( createHouseDTO.getNumberOfRooms() );
             houseEntity.setArea( createHouseDTO.getArea() );
             houseEntity.setFloor( createHouseDTO.getFloor() );
         }
