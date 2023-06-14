@@ -104,10 +104,14 @@ public class UserService implements IUserService {
     @Override
     public User updateUser(String userId, UpdateUserDTO updateUserDTO) {
         User user = getUserById(userId);
-        City city = addressService.findCityById(updateUserDTO.getCityId());
-        Set<Hobby> hobbies = new HashSet<>(hobbyService.getHobbyByIds(updateUserDTO.getHobbyIds()));
-        user.setCity(city);
-        user.setHobbies(hobbies);
+        if (updateUserDTO.getCityId() != null ) {
+            City city = addressService.findCityById(updateUserDTO.getCityId());
+            user.setCity(city);
+        }
+        if (updateUserDTO.getHobbyIds() != null) {
+            Set<Hobby> hobbies = new HashSet<>(hobbyService.getHobbyByIds(updateUserDTO.getHobbyIds()));
+            user.setHobbies(hobbies);
+        }
         userMapper.mapNonNullValues(user, updateUserDTO);
         return userRepository.save(user);
     }
